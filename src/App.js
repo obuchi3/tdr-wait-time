@@ -21,7 +21,7 @@ export class App extends Component {
     this.state = {
       tdl: [],
       tds: [],
-      selectedPark: 'tdr',
+      selectedPark: 'tdl',
       isAscSort: true,
       lastUpdate: new Date().toString()
     };
@@ -75,31 +75,49 @@ export class App extends Component {
           return 0;
         })
         .map(row => (
-          <ListGroup.Item key={row['id']}>
-            <Badge pill variant="primary">
-              {row['waitTime']}
-            </Badge>
-            　{row['name']}　
-            <Badge pill variant="info">
-              {row['fastPass'] ? 'FP' : ''}
-            </Badge>
-          </ListGroup.Item>
+          <a
+            href={this.getAttractionUrl(row['facilityCode'])}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="attraction-list"
+            key={row['id']}
+          >
+            <ListGroup.Item key={row['id']}>
+              <Badge pill variant="primary">
+                {row['waitTime']}
+              </Badge>
+              　{row['name']}　
+              <Badge pill variant="info">
+                {row['fastPass'] ? 'FP' : ''}
+              </Badge>
+            </ListGroup.Item>
+          </a>
         ))}
     </ListGroup>
   );
 
-  getClosedAttraction = () => {
-    const closedAttractions = this.getSelectedParkWaitTimes()
-      .filter(row => !row['active'])
-      .map(row => row['name']);
-    return (
-      <ListGroup>
-        {closedAttractions.map(name => (
-          <ListGroup.Item key={name}>{name}</ListGroup.Item>
+  getClosedAttraction = () => (
+    <ListGroup>
+      {this.getSelectedParkWaitTimes()
+        .filter(row => !row['active'])
+        .map(row => (
+          <a
+            href={this.getAttractionUrl(row['facilityCode'])}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="attraction-list"
+            key={row['id']}
+          >
+            <ListGroup.Item key={row['id']}>{row['name']}</ListGroup.Item>
+          </a>
         ))}
-      </ListGroup>
-    );
-  };
+    </ListGroup>
+  );
+
+  getAttractionUrl = facilityCode =>
+    `https://www.tokyodisneyresort.jp/${
+      this.state.selectedPark
+    }/attraction/detail/${facilityCode}/`;
 
   render = () => (
     <div>
@@ -114,7 +132,7 @@ export class App extends Component {
       <Nav fill variant="tabs" defaultActiveKey={this.state.selectedPark}>
         <Nav.Item>
           <Nav.Link
-            eventKey="tdr"
+            eventKey="tdl"
             onSelect={e => this.setState({ selectedPark: e })}
           >
             東京ディズニーランド
