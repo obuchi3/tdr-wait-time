@@ -83,13 +83,17 @@ export class App extends Component {
             key={row['id']}
           >
             <ListGroup.Item key={row['id']}>
-              <Badge pill variant="primary">
-                {row['waitTime']}
-              </Badge>
-              　{row['name']}　
-              <Badge pill variant="info">
-                {row['fastPass'] ? 'FP' : ''}
-              </Badge>
+              <span className="badge-wait-time">
+                <Badge pill variant="primary">
+                  {row['waitTime']}
+                </Badge>
+              </span>
+              <span className="attraction-name">{row['name']}</span>
+              <span className="badge-fast-pass">
+                <Badge pill variant="info">
+                  {row['fastPass'] ? 'FP' : ''}
+                </Badge>
+              </span>
             </ListGroup.Item>
           </a>
         ))}

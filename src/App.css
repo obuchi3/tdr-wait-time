@@ -2,10 +2,30 @@
   font-size: inherit;
 }
 
+.badge-wait-time {
+  position: absolute;
+  left: 10px;
+}
+
+.badge-fast-pass {
+  position: absolute;
+  right: 10px;
+}
+
 button {
   border-radius: 50% !important;
 }
 
 .attraction-list:hover {
   text-decoration: none;
+}
+
+.attraction-name {
+  width: 78%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: 45px;
 }
