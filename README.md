@@ -1,3 +1,3 @@
-﻿# tdr-wait-time
+﻿# [tdr-wait-time](https://tdr-wait-time.now.sh/)
 
-<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/365084/51a9d073-b129-dcd8-fdad-d9c7e9fac735.png" width=50%>
+<img src="https://user-images.githubusercontent.com/36128512/59250323-e698ca00-8c61-11e9-8a1d-f66f17d26f84.png" width=50%>
