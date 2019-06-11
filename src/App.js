@@ -12,8 +12,9 @@ import {
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faChevronUp, faChevronDown);
+library.add(faChevronUp, faChevronDown, faTwitter, faGithub);
 
 export class App extends Component {
   constructor(props) {
@@ -166,8 +167,27 @@ export class App extends Component {
         <Accordion.Collapse eventKey="1">
           {this.getClosedAttraction()}
         </Accordion.Collapse>
-        <div style={{ textAlign: 'right' }}>
-          最終データ取得時刻：{this.state.lastUpdate}
+        <div style={{ textAlign: 'center' }}>
+          LastUpdate：{this.state.lastUpdate}
+          <span style={{ marginLeft: '10px' }}>
+            <a
+              href="https://twitter.com/_obuchi3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+          </span>
+          <span style={{ marginLeft: '10px' }}>
+            <a
+              href="https://github.com/obuchi3/tdr-wait-time"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#333' }}
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          </span>
         </div>
       </Accordion>
     </div>
