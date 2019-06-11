@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { Accordion, ListGroup, Button } from 'react-bootstrap';
+import { Accordion, ListGroup, Button, Badge } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBan } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { Footer } from './footer';
+
+library.add(faBan);
 
 export class Closed extends Component {
   getClosedAttraction = () => (
@@ -17,7 +22,14 @@ export class Closed extends Component {
             className="attraction-list"
             key={row['id']}
           >
-            <ListGroup.Item key={row['id']}>{row['name']}</ListGroup.Item>
+            <ListGroup.Item key={row['id']}>
+              <span className="badge-wait-time">
+                <Badge pill variant="danger">
+                  <FontAwesomeIcon icon={faBan} />
+                </Badge>
+              </span>
+              <span className="attraction-name">{row['name']}</span>
+            </ListGroup.Item>
           </a>
         ))}
     </ListGroup>
